@@ -1,0 +1,33 @@
+<br>
+<br>
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Bok Lista</h4>
+      <ul class="list-group">
+        @for (book of books; track book.id; let i = $index) {
+        <li
+          class="list-group-item"
+          [class.active]="i == currentIndex"
+          (click)="setActiveBook(book, i)"
+        >
+          {{ book.name }}
+        </li>
+        }
+      </ul>
+      <br>
+      <div *ngIf="authService.currentUserSig() !== null">
+      <button class="btn btn-success" (click)="skapaBok()">Lägg till ny bok</button>
+      </div>
+      <br>
+      
+    </div>
+    <div class="col-md-6">
+      <app-book-details
+        [viewMode]="true"
+        [currentBook]="currentBook"
+      ></app-book-details>
+    </div>
+    <div *ngIf="authService.currentUserSig() === null">
+    <h5><br>För att lägga till och editera böcker behöver du logga in.</h5>
+    </div>
+  </div>

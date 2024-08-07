@@ -1,0 +1,75 @@
+
+@if (viewMode){
+    @if (currentBook.id){
+    <h4>Bok detaljer</h4>
+    <div>
+      <label><strong>Titel:</strong></label> {{ currentBook.name }}
+    </div>
+    <div>
+      <label><strong>Författare:</strong></label>
+      {{ currentBook.author }}
+    </div>
+    <div>
+      <label><strong>Publicerad:</strong></label>
+      {{ currentBook.published }} 
+    </div>
+    <div *ngIf="authService.currentUserSig() !== null">
+    <a class="badge badge-warning" routerLink="/books/{{ currentBook.id }}">
+      Editera
+    </a>
+    </div>
+    
+    } @else {<p>Välj en bok för att se detaljer</p>}
+  } @else {
+    @if (currentBook.id) {
+    <div class="edit-form">
+      <h4>Bok</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Titel</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentBook.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="author">Författare</label>
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+            [(ngModel)]="currentBook.author"
+            name="author"
+          />
+        </div>
+        <div class="form-group">
+          <label for="published">Publicerad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="author"
+            [(ngModel)]="currentBook.published"
+            name="published"
+          />
+        </div>
+
+      </form>
+      <div *ngIf="authService.currentUserSig() !== null">
+      <button class="badge badge-danger mr-2" (click)="deleteBook()">
+        Ta bort
+      </button>
+      </div>
+      <div *ngIf="authService.currentUserSig() !== null"></div>
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateBook()">
+        Updatera
+      </button>
+      <p>{{ message }}</p>
+    </div>
+    } @else {<p>Kommer inte åt vald bok...</p>}
+  }

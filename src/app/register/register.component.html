@@ -1,0 +1,16 @@
+<h1>Registrera</h1>
+<form [formGroup]="form" class="formGroup" (ngSubmit)="onSubmit()">
+    <div class="formGroup">
+        <input type="text" placeholder="Användarnamn" formControlName="username"/>
+    </div>
+    <div class="formGroup">
+        <input type="text" placeholder="E-post" formControlName="email"/>
+    </div>
+    <div class="formGroup">
+        <input type="password" placeholder="Lösenord" formControlName="password"/>
+    </div>
+    <br>
+    <div>
+        <button class="btn btn-primary" type="submit">Signa Upp</button>
+    </div>
+</form>

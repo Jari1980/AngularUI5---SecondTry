@@ -1,0 +1,47 @@
+<div>
+    <div class="submit-form">
+      @if (!submitted) { 
+      <div class="form-group">
+        <label for="name">Titel</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="book.name"
+          name="name"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="author">Författare</label>
+        <input
+          class="form-control"
+          id="author"
+          required
+          [(ngModel)]="book.author"
+          name="author"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="published">Publicerad</label>
+        <input
+          class="form-control"
+          id="published"
+          required
+          [(ngModel)]="book.published"
+          name="published"
+        />
+      </div>
+  
+      <button (click)="saveBook()" class="btn btn-success">Spara bok</button>
+       
+    }
+    <!--@else {
+      <h4>Book was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newBook()">Add New Book</button>
+      <a [routerLink]="['']"]></a>
+    }-->
+    </div>
+  </div>
